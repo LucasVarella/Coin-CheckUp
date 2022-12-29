@@ -9,6 +9,11 @@ body{
     flex-wrap: wrap;
 }
 
+.flex-row-no-wrap{
+    display: flex;
+    flex-direction: row;
+}
+
 .flex-column{
     display: flex;
     flex-direction: column;

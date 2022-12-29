@@ -60,13 +60,17 @@ function btc(){
         }
 
         var vwap = parseFloat(data.data.vwap24Hr).toFixed(2);
-        document.querySelector('#vwap').innerHTML = vwap;
-        localStorage.setItem('vwap',vwap);
+        let vwapString ='$'.concat(spaceString.concat(new String(vwap)));
+        document.querySelector('#vwap').innerHTML = vwapString;
+        localStorage.setItem('vwap',vwapString);
+
 
 
         
     });
 }
+
+
 
 document.addEventListener('DOMContentLoaded', function(){
 
@@ -77,14 +81,17 @@ document.addEventListener('DOMContentLoaded', function(){
     document.querySelector('#volume').innerHTML = localStorage.getItem('volume');
     document.querySelector('#supply').innerHTML = localStorage.getItem('supply');
 
+    setInterval(btc, 500)       
+    
     document.querySelectorAll('.div-coin').forEach(function(div){
         div.onclick = function(){
             coin = div.dataset.name;
+            setTimeout(function (){
+                document.querySelector('#coin-logo').setAttribute('src', `imgs/coin-logo/${coin}.png`);
+            }, 500);
             
-            document.querySelector('#coin-logo').setAttribute('src', `imgs/coin-logo/${coin}.png`)
         }
     });
 
-    setInterval(btc, 500)                
     
 });
