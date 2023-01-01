@@ -55,9 +55,12 @@ body{
     max-width: 50px;
 }
 
+h4{
+    font-weight: bold;
+}
+
 h5{
     margin: 0;
-    
 }
 
 .div-coin{

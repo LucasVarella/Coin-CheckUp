@@ -10,11 +10,9 @@ function btc(){
             localStorage.setItem('price',0);
         }
     
-        var price = parseFloat(data.data.priceUsd).toFixed(2);
-
+        let price = parseFloat(data.data.priceUsd).toFixed(2);
+        let priceString = Number(price).toLocaleString("pt-BR", {style:"currency", currency:"USD"});
         let h1_price = document.querySelector('#price');
-        let spaceString ='\xa0';
-        let priceString = '$'.concat(spaceString.concat(new String(price)));
         h1_price.innerHTML = priceString;
         localStorage.setItem('priceString',priceString);
 
@@ -30,21 +28,23 @@ function btc(){
             }
         }     
         
-        var marketcap = parseFloat(data.data.marketCapUsd).toFixed(2);
+        let marketcap = parseFloat(data.data.marketCapUsd).toFixed(2);
+        marketcap = Number(marketcap).toLocaleString("pt-BR", {style:"currency", currency:"USD"});
         document.querySelector('#marketcap').innerHTML = marketcap;
         localStorage.setItem('marketcap',marketcap);
 
-        var supply = parseFloat(data.data.supply).toFixed(2);
+        let supply = parseFloat(data.data.supply).toFixed(2);
         document.querySelector('#supply').innerHTML = supply;
         localStorage.setItem('supply',supply);
         
-        var volume = parseFloat(data.data.volumeUsd24Hr).toFixed(2);
+        let volume = parseFloat(data.data.volumeUsd24Hr).toFixed(2);
+        volume = Number(volume).toLocaleString("pt-BR", {style:"currency", currency:"USD"});
         document.querySelector('#volume').innerHTML = volume;
         localStorage.setItem('volume',volume);
 
-        var variation = parseFloat(data.data.changePercent24Hr).toFixed(2);
+        let variation = parseFloat(data.data.changePercent24Hr).toFixed(2);
 
-        variationString = new String(variation).concat(spaceString).concat('%');
+        variationString = new String(variation).concat("\xa0").concat('%');
 
         document.querySelector('#variation').innerHTML = variationString;
         localStorage.setItem('variation',variation);
@@ -59,10 +59,12 @@ function btc(){
             }
         }
 
-        var vwap = parseFloat(data.data.vwap24Hr).toFixed(2);
-        let vwapString ='$'.concat(spaceString.concat(new String(vwap)));
-        document.querySelector('#vwap').innerHTML = vwapString;
-        localStorage.setItem('vwap',vwapString);
+        let vwap = parseFloat(data.data.vwap24Hr).toFixed(2);
+        vwap = Number(vwap).toLocaleString("pt-BR", {style:"currency", currency:"USD"});
+        document.querySelector('#vwap').innerHTML = vwap;
+        localStorage.setItem('vwap',vwap);
+        
+        
 
 
 
